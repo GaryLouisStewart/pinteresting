@@ -11,6 +11,8 @@
   </thead>
 
   <tbody>
+<if pin.user == current_user %>
+
     <% @pins.each do |pin| %>
       <tr>
         <td><%= pin.description %></td>
@@ -19,9 +21,12 @@
         <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+
+    <% end %> 
   </tbody>
 </table>
 
 <br>
 
 <%= link_to 'New Pin', new_pin_path %>
+<%= pin.user.email if pin.user %>
